@@ -11,11 +11,13 @@ import time
 
 ## CFG
 cfg_enable_url_download = True
-url = "https://archive.org/download/yoloTrained/yoloTrained.pt" #Configure this if you set cfg_enable_url_download to True 
+url = "https://archive.org/download/yoloTrained/yoloTrained.pt" #Configure this if you set cfg_enable_url_download to True
+cfg_model_path = "models/yourModel.pt" 
+
 if cfg_enable_url_download:
-    cfg_model_path = f"models/{url.split('/')[-1:]}"
+    cfg_model_path = f"models/{url.split('/')[-1:]}" #config model path from url name
 else:
-    cfg_model_path = "models/yourModel.pt"
+    
 
 
 
