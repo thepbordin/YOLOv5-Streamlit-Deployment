@@ -51,7 +51,7 @@ cfg_enable_url_download = True
 url = "your_model_url"
 ```
 
-## Use local .pt file:
+### Use local .pt file:
 
 Edit config in [app.py](https://github.com/thepbordin/Obstacle-Detection-for-Blind-people-Deployment/blob/main/app.py)
 
