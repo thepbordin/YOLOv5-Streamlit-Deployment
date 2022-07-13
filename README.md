@@ -8,7 +8,7 @@ Easy way to deploy [YOLOv5](https://github.com/ultralytics/yolov5) object detect
 
 codes modified by GitHub/thepbordin from GitHub/zhoroh
 
-Clone This repo and read install instruction from [Installation Guide](https://github.com/thepbordin/YOLOv5-Streamlit-Deployment#%EF%B8%8FInstallation Guide).
+Clone This repo and read install instruction from [Installation Guide](https://github.com/thepbordin/YOLOv5-Streamlit-Deployment#%EF%B8%8Finstallation-guide).
 
 
 
