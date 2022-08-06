@@ -1,4 +1,6 @@
 # 🚀YOLOv5 Streamlit Deployment
+[![HitCount](https://hits.dwyl.com/thepbordin/YOLOv5-Streamlit-Deployment.svg?style=flat&show=unique)](http://hits.dwyl.com/thepbordin/YOLOv5-Streamlit-Deployment)
+
 
 Easy way to deploy [YOLOv5](https://github.com/ultralytics/yolov5) object detection model with [Streamlit](https://streamlit.io/). 
 
