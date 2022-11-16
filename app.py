@@ -16,7 +16,7 @@ cfg_enable_url_download = True
 if cfg_enable_url_download:
     url = "https://archive.org/download/yoloTrained/yoloTrained.pt" #Configure this if you set cfg_enable_url_download to True
     cfg_model_path = f"models/{url.split('/')[-1:]}" #config model path from url name
-
+## END OF CFG
 
 
 
@@ -39,10 +39,11 @@ def imageInput(device, src):
                 f.write(image_file.getbuffer())
 
             #call Model prediction--
+            model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/yoloTrained.pt', force_reload=True) 
             model.cuda() if device == 'cuda' else model.cpu()
             pred = model(imgpath)
             pred.render()  # render bbox in image
-            for im in pred.imgs:
+            for im in pred.ims:
                 im_base64 = Image.fromarray(im)
                 im_base64.save(outputpath)
 
@@ -68,7 +69,7 @@ def imageInput(device, src):
                 model = torch.hub.load('ultralytics/yolov5', 'custom', path=cfg_model_path, force_reload=True) 
                 pred = model(image_file)
                 pred.render()  # render bbox in image
-                for im in pred.imgs:
+                for im in pred.ims:
                     im_base64 = Image.fromarray(im)
                     im_base64.save(os.path.join('data/outputs', os.path.basename(image_file)))
                 #--Display predicton
