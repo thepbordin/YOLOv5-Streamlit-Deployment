@@ -136,5 +136,5 @@ def loadModel():
     model_file = wget.download(url, out="models/")
     finished_dl = time.time()
     print(f"Model Downloaded, ETA:{finished_dl-start_dl}")
-    if cfg_enable_url_download:
-        loadModel()
+if cfg_enable_url_download:
+    loadModel()
