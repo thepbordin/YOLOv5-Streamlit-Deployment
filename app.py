@@ -116,7 +116,7 @@ def main():
     # -- End of Sidebar
 
     st.header('📦Obstacle Detection')
-    st.subheader('👈🏽 Select options left-haned menu bar.')
+    st.subheader('📌YOLOv5 Streamlit Deployment')
     st.sidebar.markdown("https://github.com/thepbordin/Obstacle-Detection-for-Blind-people-Deployment")
     if option == "Image":    
         imageInput(deviceoption, datasrc)
@@ -136,5 +136,6 @@ def loadModel():
     model_file = wget.download(url, out="models/")
     finished_dl = time.time()
     print(f"Model Downloaded, ETA:{finished_dl-start_dl}")
+
 if cfg_enable_url_download:
     loadModel()
