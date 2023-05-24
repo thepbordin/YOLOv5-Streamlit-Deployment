@@ -32,8 +32,10 @@ code modified by GitHub/thepbordin from GitHub/zhoroh
 ### Local Use
 1. Install Requirements 
 	`pip install -r requirements.txt`
-2. Install ffmpeg for video inferencing
-	`brew install ffmpeg`
+2. Install ffmpeg (for video inferencing)
+	- For Windows [read here](https://www.geeksforgeeks.org/how-to-install-ffmpeg-on-windows/)
+	- For Mac (brew)
+		`brew install ffmpeg`
 3. Strart Stremlit
 	```
 	cd YOLOv5-Streamlit-Deployment
