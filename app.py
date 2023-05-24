@@ -166,7 +166,6 @@ def downloadModel():
     if not os.path.exists(cfg_model_path):
         wget.download(url, out="models/")
 
-
 @st.cache_resource
 def loadmodel(device):
     model = torch.hub.load('ultralytics/yolov5', 'custom',
