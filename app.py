@@ -10,14 +10,12 @@ from video_predict import runVideo
 
 
 # Configurations
-cfg_model_path = "models/yourModel.pt"
-cfg_enable_url_download = True
-if cfg_enable_url_download:
+CFG_MODEL_PATH = "models/yourModel.pt"
+CFG_ENABLE_URL_DOWNLOAD = True
+CFG_ENABLE_VIDEO_PREDICTION = True
+if CFG_ENABLE_URL_DOWNLOAD:
     # Configure this if you set cfg_enable_url_download to True
     url = "https://archive.org/download/yoloTrained/yoloTrained.pt"
-    cfg_model_path = f"models/{url.split('/')[-1:][0]}"
-    # Check local model
-
 # End of Configurations
 
 
@@ -129,10 +127,11 @@ def videoInput(model, src):
 
 
 def main():
-    if cfg_enable_url_download:
+    if CFG_ENABLE_URL_DOWNLOAD:
         downloadModel()
+        CFG_MODEL_PATH = f"models/{url.split('/')[-1:][0]}"
     else:
-        if not os.path.exists(cfg_model_path):
+        if not os.path.exists(CFG_MODEL_PATH):
             st.error(
                 'Model not found, please config if you wish to download model from url set `cfg_enable_url_download = True`  ', icon="⚠️")
 
@@ -141,7 +140,10 @@ def main():
     datasrc = st.sidebar.radio("Select input source.", [
                                'From example data.', 'Upload your own data.'])
 
-    option = st.sidebar.radio("Select input type.", ['Image', 'Video'])
+    if CFG_ENABLE_VIDEO_PREDICTION:
+        option = st.sidebar.radio("Select input type.", ['Image', 'Video'])
+    else:
+        option = st.sidebar.radio("Select input type.", ['Image'])
     if torch.cuda.is_available():
         deviceoption = st.sidebar.radio("Select compute Device.", [
                                         'cpu', 'cuda'], disabled=False, index=1)
@@ -163,13 +165,14 @@ def main():
 # Downlaod Model from url.
 @st.cache_resource
 def downloadModel():
-    if not os.path.exists(cfg_model_path):
+    if not os.path.exists(CFG_MODEL_PATH):
         wget.download(url, out="models/")
+        
 
 @st.cache_resource
 def loadmodel(device):
     model = torch.hub.load('ultralytics/yolov5', 'custom',
-                           path=cfg_model_path, force_reload=True, device=device)
+                           path=CFG_MODEL_PATH, force_reload=True, device=device)
     return model
 
 
