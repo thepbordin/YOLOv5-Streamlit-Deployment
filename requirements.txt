@@ -13,7 +13,7 @@ torch>=1.7.0
 torchvision>=0.8.1
 tqdm>=4.41.0
 protobuf<4.21.5  # https://github.com/ultralytics/yolov5/issues/8012
-
+ultralytics
 # Logging -------------------------------------
 tensorboard>=2.4.1
 # wandb
