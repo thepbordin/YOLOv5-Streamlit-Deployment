@@ -25,7 +25,7 @@
 
 storage.googleapis.com
 runs/*
-data/*
+
 
 !data/*.yaml
 !data/hyps
@@ -170,6 +170,7 @@ ENV*/
 # https://github.com/github/gitignore/blob/master/Global/macOS.gitignore -----------------------------------------------
 
 # General
+*/.DS_Store
 .DS_Store
 .AppleDouble
 .LSOverride
