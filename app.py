@@ -17,7 +17,7 @@ if cfg_enable_url_download:
     url = "https://archive.org/download/yoloTrained/yoloTrained.pt"
     cfg_model_path = f"models/{url.split('/')[-1:][0]}"
     # Check local model
-    
+
 # End of Configurations
 
 
@@ -92,6 +92,8 @@ def videoInput(model, src):
     if src == 'Upload your own data.':
         uploaded_video = st.file_uploader(
             "Upload A Video", type=['mp4', 'mpeg', 'mov'])
+        pred_view = st.empty()
+        warning = st.empty()
         if uploaded_video != None:
 
             # Save video to disk
@@ -108,7 +110,7 @@ def videoInput(model, src):
             st.write("Uploaded Video")
             submit = st.button("Run Prediction")
             if submit:
-                runVideo(model, uploaded_video_path)
+                runVideo(model, uploaded_video_path, pred_view, warning)
 
     elif src == 'From example data.':
         # Image selector slider
@@ -119,13 +121,11 @@ def videoInput(model, src):
             return
         imgsel = st.slider('Select random video from example data.',
                            min_value=1, max_value=len(videopaths), step=1)
+        pred_view = st.empty()
         video = videopaths[imgsel-1]
         submit = st.button("Predict!")
         if submit:
-            runVideo(model, video)
-
-
-
+            runVideo(model, video, pred_view, warning)
 
 
 def main():
@@ -133,7 +133,8 @@ def main():
         downloadModel()
     else:
         if not os.path.exists(cfg_model_path):
-            st.error('Model not found, please config if you wish to download model from url set `cfg_enable_url_download = True`  ', icon="⚠️")
+            st.error(
+                'Model not found, please config if you wish to download model from url set `cfg_enable_url_download = True`  ', icon="⚠️")
 
     # -- Sidebar
     st.sidebar.title('⚙️ Options')
