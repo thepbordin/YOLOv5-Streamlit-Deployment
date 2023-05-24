@@ -29,3 +29,4 @@ psutil  # system utilization
 thop  # FLOPs computation
 streamlit
 wget
+ffmpeg
