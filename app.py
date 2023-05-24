@@ -11,7 +11,7 @@ from video_predict import runVideo
 
 # Configurations
 cfg_model_path = "models/yourModel.pt"
-cfg_enable_url_download = False
+cfg_enable_url_download = True
 if cfg_enable_url_download:
     # Configure this if you set cfg_enable_url_download to True
     url = "https://archive.org/download/yoloTrained/yoloTrained.pt"
