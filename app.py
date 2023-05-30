@@ -129,7 +129,7 @@ def videoInput(model, src):
 def main():
     if CFG_ENABLE_URL_DOWNLOAD:
         downloadModel()
-        CFG_MODEL_PATH = f"models/{url.split('/')[-1:][0]}"
+        
     else:
         if not os.path.exists(CFG_MODEL_PATH):
             st.error(
@@ -171,6 +171,8 @@ def downloadModel():
 
 @st.cache_resource
 def loadmodel(device):
+    if CFG_ENABLE_URL_DOWNLOAD:
+        CFG_MODEL_PATH = f"models/{url.split('/')[-1:][0]}"
     model = torch.hub.load('ultralytics/yolov5', 'custom',
                            path=CFG_MODEL_PATH, force_reload=True, device=device)
     return model
